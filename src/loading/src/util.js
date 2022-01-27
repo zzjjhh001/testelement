@@ -1,7 +1,7 @@
 import Vue from 'vue';
 const isServer = Vue.prototype.$isServer;
 const instances = {};
-/*eslint no-useless-escape: "error"*/
+// 解决esLint ,/([\:\-\_]+(.))/g => /([:-_]+(.))/g
 const SPECIAL_CHARS_REGEXP = /([:-_]+(.))/g;
 const MOZ_HACK_REGEXP = /^moz([A-Z])/;
 export const PopupManager = {
@@ -270,7 +270,7 @@ export function merge(target) {
   for (let i = 1, j = arguments.length; i < j; i++) {
     let source = arguments[i] || {};
     for (let prop in source) {
-      // if (source.hasOwnProperty(prop)) {
+      // 解决esLint 原来是 => if (source.hasOwnProperty(prop)) {
       if (Object.prototype.hasOwnProperty.call(source, prop)) {
         let value = source[prop];
         if (value !== undefined) {
